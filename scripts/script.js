@@ -75,27 +75,19 @@ document.querySelector(CLASSLIST.MENU).addEventListener("click", () => {
 })
 document.getElementById(ID.FOOTER_LOGO).addEventListener('click', () => scrollTo({top: 0, left: 0, behavior: 'smooth'}))
 
-if(document.body.offsetWidth < 481){
-    document.querySelector(CLASSLIST.ABOUT_IMAGE).children[0].after(aboutImg) 
+document.body.offsetWidth < 481 ? (document.querySelector(CLASSLIST.ABOUT_IMAGE).children[0].after(aboutImg), document.querySelectorAll(CLASSLIST.CONTACT_IMAGE)[1].children[0].after(contactImg)) : null
+    
 
-    document.querySelectorAll(CLASSLIST.CONTACT_IMAGE)[1].children[0].after(contactImg)
-}
 document.body.offsetWidth < 767 ? createLogo() : deleteLogo()
 
 window.addEventListener('resize', () => {
-    if(document.body.offsetWidth < 767)
-        createLogo() 
-    else{
-        deleteLogo()
-        !closed ? closeMenu() : null
+    document.body.offsetWidth < 767 ? createLogo() : (deleteLogo(), !closed ? closeMenu() : null)
 
-        document.querySelector(CLASSLIST.ABOUT_IMAGE).after(aboutImg)
-
-        document.querySelector(CLASSLIST.CONTACT_IMAGE).append(contactImg)
-    }
     if(document.body.offsetWidth < 481) {
         document.querySelector(CLASSLIST.ABOUT_IMAGE).children[0].after(aboutImg)
-
         document.querySelectorAll(CLASSLIST.CONTACT_IMAGE)[1].children[0].after(contactImg)        
+    } else {
+        document.querySelector(CLASSLIST.ABOUT_IMAGE).after(aboutImg)
+        document.querySelector(CLASSLIST.CONTACT_IMAGE).append(contactImg)
     }
 })
