@@ -760,7 +760,9 @@ body {
 	.card__text{white-space: normal;}
 	.about__row{flex-direction: column;}
 	.about__column{text-align: center;}
-	.about__info{justify-content: center;}
+	.about__info{justify-content: center; flex-direction: column;}
+	.info__item:not(:last-child){margin-right: 0;}
 	.about__title{text-align: center;}
 	.contact__row{flex-direction: column;}
+	.contact__title{text-align: center;}
 }
